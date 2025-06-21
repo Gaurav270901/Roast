@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Traitors Brain Rot Detector 🧠💀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff0066, #6600ff, #00ffcc, #ff6600);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            background: rgba(0,0,0,0.8);
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            border-bottom: 5px solid #ff0066;
+        }
+
+        .floating-emojis {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .emoji-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .emoji-2 { top: 20%; right: 15%; animation-delay: 2s; }
+        .emoji-3 { bottom: 15%; left: 20%; animation-delay: 4s; }
+        .emoji-4 { bottom: 25%; right: 10%; animation-delay: 1s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
+            50% { transform: translateY(-10px) rotate(-5deg) scale(0.9); }
+            75% { transform: translateY(-30px) rotate(10deg) scale(1.05); }
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 5px 5px 0px #ff0066, 10px 10px 0px #6600ff;
+            margin-bottom: 0.5rem;
+            animation: wobble 3s ease-in-out infinite;
+            background: linear-gradient(45deg, #ff0066, #00ffcc, #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            75% { transform: rotate(-1deg); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-style: italic;
+            background: #ff0066;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            transform: rotate(-2deg);
+            box-shadow: 0 10px 30px rgba(255,0,102,0.5);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(-2deg) translateY(0px); }
+            50% { transform: rotate(-2deg) translateY(-10px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .warning-banner {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            padding: 1rem;
+            margin: 2rem 0;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px dashed #fff;
+            animation: flash 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes flash {
+            0%, 100% { background: linear-gradient(45deg, #ff4444, #ff6666); }
+            50% { background: linear-gradient(45deg, #ff6666, #ff4444); }
+        }
+
+        .warning-banner::before {
+            content: '⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            animation: warningSlide 3s linear infinite;
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        @keyframes warningSlide {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .roast-counter {
+            background: rgba(0,0,0,0.9);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 25px;
+            text-align: center;
+            border: 5px solid #00ffcc;
+            box-shadow: 0 0 50px rgba(0,255,204,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roast-counter::before {
+            content: '🧠💀🧠💀🧠💀🧠💀🧠💀';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            font-size: 2rem;
+            animation: scroll 5s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .counter-display {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #00ffcc;
+            margin: 1rem 0;
+            text-shadow: 0 0 20px #00ffcc;
+            animation: pulse 1s infinite;
+        }
+
+        .roast-section {
+            background: rgba(0,0,0,0.8);
+            margin: 3rem 0;
+            padding: 2.5rem;
+            border-radius: 30px;
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff0066, #6600ff, #00ffcc, #ff6600) 1;
+            backdrop-filter: blur(15px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roast-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
+            animation: shimmer 4s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .roast-section:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255,0,102,0.4);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateY(-10px) scale(1.02) rotate(0deg); }
+            25% { transform: translateY(-10px) scale(1.02) rotate(1deg); }
+            75% { transform: translateY(-10px) scale(1.02) rotate(-1deg); }
+        }
+
+        .roast-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0066, #6600ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .roast-content {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .roast-content strong {
+            background: linear-gradient(45deg, #ff0066, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3rem;
+        }
+
+        .extra-roasts {
+            background: rgba(0,0,0,0.9);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 40px;
+            text-align: center;
+            border: 5px solid #ff6600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .extra-roasts::before {
+            content: '🔥';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: fireRotate 10s linear infinite;
+        }
+
+        @keyframes fireRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .extra-roasts h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-shadow: 5px 5px 0px #ff0066;
+            animation: rainbow 3s linear infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff0066; }
+            16% { color: #ff6600; }
+            32% { color: #ffff00; }
+            48% { color: #00ff00; }
+            64% { color: #00ffcc; }
+            80% { color: #6600ff; }
+            100% { color: #ff0066; }
+        }
+
+        .roast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .roast-card {
+            background: linear-gradient(135deg, rgba(255,0,102,0.2), rgba(102,0,255,0.2));
+            padding: 2rem;
+            border-radius: 25px;
+            border: 3px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .roast-card::before {
+            content: '😂';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        .roast-card:hover {
+            transform: scale(1.1) rotate(2deg);
+            background: linear-gradient(135deg, rgba(255,0,102,0.4), rgba(102,0,255,0.4));
+            box-shadow: 0 20px 40px rgba(255,0,102,0.5);
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: scale(1.1) rotate(2deg); }
+            25% { transform: scale(1.1) rotate(4deg); }
+            75% { transform: scale(1.1) rotate(0deg); }
+        }
+
+        .interactive-section {
+            background: rgba(0,0,0,0.9);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 30px;
+            text-align: center;
+            border: 3px solid #00ffcc;
+            position: relative;
+        }
+
+        .random-roast {
+            background: linear-gradient(45deg, #ff0066, #6600ff);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 20px;
+            text-align: center;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .random-roast::before {
+            content: '💥';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2rem;
+            animation: explosion 2s infinite;
+        }
+
+        @keyframes explosion {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+        }
+
+        .interactive-button {
+            background: linear-gradient(45deg, #ff0066, #ff6600);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255,0,102,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .interactive-button:hover::before {
+            left: 100%;
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255,0,102,0.6);
+            animation: buttonPulse 0.3s ease;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: translateY(-5px) scale(1.05); }
+            50% { transform: translateY(-5px) scale(1.1); }
+        }
+
+        .final-verdict {
+            background: linear-gradient(45deg, #ff0066, #6600ff, #00ffcc);
+            padding: 4rem;
+            margin: 4rem 0;
+            border-radius: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #fff;
+        }
+
+        .final-verdict::before {
+            content: '🧠💀🧠💀🧠💀🧠💀';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 8rem;
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verdict-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 0px #000;
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            background: rgba(0,0,0,0.95);
+            padding: 3rem;
+            text-align: center;
+            border-top: 3px solid #ff0066;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '👻💀😵‍💫🤡💀👻😵‍💫🤡💀';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 2rem;
+            animation: ghostly 6s linear infinite;
+        }
+
+        @keyframes ghostly {
+            0% { transform: translateX(-100%); opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0.5; }
+        }
+
+        .brain-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            padding: 1rem;
+            border-radius: 15px;
+            border: 2px solid #00ffcc;
+            font-weight: bold;
+            z-index: 1000;
+            animation: statusBlink 2s infinite;
+        }
+
+        @keyframes statusBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .roast-section {
+                padding: 2rem;
+            }
+            
+            .roast-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .click-me {
+            animation: clickAnimation 1s infinite;
+        }
+
+        @keyframes clickAnimation {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="brain-status" id="brainStatus">
+        🧠 Status: CRITICAL
+    </div>
+
+    <div class="floating-emojis emoji-1">🤡</div>
+    <div class="floating-emojis emoji-2">💀</div>
+    <div class="floating-emojis emoji-3">😵‍💫</div>
+    <div class="floating-emojis emoji-4">🧠</div>
+
+    <div class="header">
+        <div class="container">
+            <h1>The Traitors Brain Rot Detector</h1>
+            <p class="subtitle">WARNING: May Cause Severe Intellectual Allergic Reactions</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="warning-banner">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">🚨 DANGER ZONE 🚨</h2>
+            <p style="font-size: 1.2rem; position: relative; z-index: 1;">You are about to enter a roast-free zone. Side effects may include: uncontrollable laughter, existential crisis about your TV choices, and sudden urge to delete streaming apps.</p>
+        </div>
+
+        <div class="roast-counter">
+            <div class="counter-display" id="roastCounter">0</div>
+            <p style="font-size: 1.2rem; font-weight: bold; position: relative; z-index: 1;">IQ Points Lost While Watching This Show</p>
+            <p style="font-size: 1rem; opacity: 0.8; position: relative; z-index: 1;">*Counter is still calculating... it's in the millions*</p>
+        </div>
+
+        <div class="roast-section">
+            <div class="roast-number">1.</div>
+            <div class="roast-content">
+                <strong>You're watching people fake betrayal for ₹10 lakh and Instagram clout.</strong> 
+                You really sat there… voluntarily… and watched grown adults pretend to be shocked when someone they just met "betrayed" them on a scripted reality show? This isn't betrayal — it's budget cosplay for people who think McDonald's is fine dining and consider "influencer" a real job title. 🤡
+            </div>
+        </div>
+
+        <div class="roast-section">
+            <div class="roast-number">2.</div>
+            <div class="roast-content">
+                <strong>It's diet drama for people too lazy to watch actual good content.</strong> 
+                Go watch *Breaking Bad*, *Succession*, or literally anything with a plot that wasn't written on a napkin during a lunch break by someone's intern's cousin. This is like licking a packet of Maggi masala and calling it dinner while Gordon Ramsay cries tears of pure disappointment in the distance. 😭
+            </div>
+        </div>
+
+        <div class="roast-section">
+            <div class="roast-number">3.</div>
+            <div class="roast-content">
+                <strong>It's a graveyard for failed influencers and has-beens.</strong> 
+                The show is basically a talent rehab center: washed-up YouTubers with 3 subscribers, Instagram models who peaked in 2019, and that one guy who was in one song in 2016 that literally nobody remembers (not even his mom). If you want to see people act desperate for screen time, just open LinkedIn and watch middle managers post motivational quotes about "grinding." 💀
+            </div>
+        </div>
+
+        <div class="roast-section">
+            <div class="roast-number">4.</div>
+            <div class="roast-content">
+                <strong>It's emotionally manipulative junk TV — and you're eating it up like it's gourmet.</strong> 
+                Crying over someone getting "banished"? Babe, they're actors with NDAs thicker than your attention span and faker than your ex's apology texts. You're more invested in this manufactured drama than the contestants are in their own rapidly declining careers. 😵‍💫
+            </div>
+        </div>
+
+        <div class="roast-section">
+            <div class="roast-number">5.</div>
+            <div class="roast-content">
+                <strong>You're literally paying Amazon to perform brain surgery... without anesthesia.</strong> 
+                Every minute spent watching this show is a minute your brain cells write collective suicide notes and file for bankruptcy. You could've learned a skill, read a book, watched an actual story with character development, or stared at a wall and gained more insight into the meaning of existence. 🧠💀
+            </div>
+        </div>
+
+        <div class="roast-section">
+            <div class="roast-number">6.</div>
+            <div class="roast-content">
+                <strong>This isn't entertainment. It's digital junk food for chronically bored brains.</strong> 
+                It's the same recycled plot every episode, wrapped in neon lights and Karan Johar's fake seriousness that could power a small village's drama quota for a year. You're basically binge-watching disappointment with a soundtrack that sounds like elevator music had a midlife crisis and decided to become a DJ. 🎵💩
+            </div>
+        </div>
+    </div>
+
+    <div class="extra-roasts">
+        <div class="container">
+            <h2>🔥 BONUS DESTRUCTION PACKAGE 🔥</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 2rem; position: relative; z-index: 1;">Because we're not done obliterating your questionable life choices</p>
+            
+            <div class="roast-grid">
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>The Strategy is Kindergarten Level:</strong> "I'm going to lie!" followed by immediately getting caught red-handed. These people couldn't strategize their way out of a paper bag with GPS, a compass, and a team of professional escape artists. 🤦‍♂️
+                </div>
+                
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>The Acting Makes Community Theater Look Like Oscar Material:</strong> You've seen more convincing performances from your 5-year-old nephew pretending he didn't eat the cookies while chocolate is still smeared on his face. 🎭
+                </div>
+                
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>It's Reality TV for People Who Think Wrestling is a Documentary:</strong> Congratulations, you've found entertainment that makes *Bigg Boss* look like a PBS documentary on quantum physics narrated by Stephen Hawking's ghost. 🤼‍♂️
+                </div>
+                
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>The Twists are More Predictable Than Your Netflix Algorithm:</strong> "OMG, there's a twist!" Yeah, the twist is that you wasted another precious hour of your finite existence on this planet watching people pretend to be surprised by things they rehearsed yesterday. ⏰
+                </div>
+                
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>You're Basically Watching People Play Mafia Badly:</strong> Remember that party game from college? These people would lose to a group of actual toddlers who just learned to count and still think chocolate milk comes from brown cows. 🐄
+                </div>
+                
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>The Prize Money Could've Been Your Therapy Fund:</strong> Instead of watching people fake cry for cash, maybe invest in understanding why you enjoy watching people fake cry for cash. Meta-therapy for the win! 💰
+                </div>
+
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>Your Viewing Habits Have Disappointed Your Ancestors:</strong> Somewhere, your great-great-grandmother who survived actual hardships is rolling in her grave because you chose THIS as entertainment. She fought real battles, you watch fake ones. 👵
+                </div>
+
+                <div class="roast-card click-me" onclick="highlightCard(this)">
+                    <strong>Netflix's Algorithm is Having an Existential Crisis:</strong> Even the AI is confused about why you keep clicking on this. It's probably having digital nightmares and questioning its purpose in life. 🤖
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="interactive-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: #00ffcc;">🎯 ROAST ROULETTE ZONE 🎯</h2>
+            
+            <div class="random-roast" id="randomRoast">
+                <p>Ready to get personally attacked by our roast generator? Click below if you dare! 😈</p>
+            </div>
+            
+            <button class="interactive-button" onclick="generateRandomRoast()">🔥 Generate Random Roast</button>
+            <button class="interactive-button" onclick="countBrainCells()">🧠 Check Brain Cell Count</button>
+            <button class="interactive-button" onclick="generateExcuse()">🤥 Generate Excuse</button>
+        </div>
+    </div>
+
+    <div class="final-verdict">
+        <div class="container">
+            <div class="verdict-title">🧠💀 FINAL DIAGNOSIS 💀🧠</div>
+            <p style="font-size: 1.4rem; line-height: 1.8; position: relative; z-index: 1;">
+                If your idea of "quality content" is watching failed celebs pretend to lie and cry for money while you eat cereal in your pajamas at 2 PM on a Tuesday, maybe it's time to <strong>re-evaluate your entire existence</strong>. 
+                <br><br>
+                There's trash TV… there's guilty pleasure TV… there's "so bad it's good" TV… and then there's *The Traitors India*. This one belongs in a nuclear waste disposal site, not your watchlist. Your brain deserves better. Your time deserves better. Even your Netflix algorithm is currently having an intervention meeting about your choices.
+                <br><br>
+                <strong>Prescription:</strong> Go touch grass. Literally any grass. A houseplant counts. A photo of grass on Google Images might be a start. Your brain cells are filing a class-action lawsuit against you as we speak. 🌱
+                <br><br>
+                <em>P.S. If you're still watching after reading this, we can't help you. Please seek professional intervention and maybe consider a digital detox retreat in the Himalayas.</em>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p style="font-size: 1.2rem; position: relative; z-index: 1;">© 2025 The Ultimate Brain Rot Detector™. No actual brain cells were harmed in the making of this website.</p>
+            <p style="margin-top: 1rem; opacity: 0.8; position: relative; z-index: 1;">Disclaimer: If you still watch The Traitors after reading this, we legally cannot be held responsible for your life choices. Please consult a therapist, a life coach, or at minimum, a wise pigeon.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6; position: relative; z-index: 1;">Side effects may include: sudden clarity, uncontrollable urge to read books, desire to learn actual skills, and temporary allergy to reality TV.</p>
+        </div>
+    </div>
+
+    <script>
+        // Counter animation with more dramatic effects
+        let counter = 0;
+        function updateCounter() {
+            counter += Math.floor(Math.random() * 100) + 50;
+            document.getElementById('roastCounter').textContent = counter.toLocaleString();
+            
+            // Update brain status
+            const statusEl = document.getElementById('brainStatus');
+            if (counter > 10000) {
+                statusEl.innerHTML = '🧠 Status: FLATLINED';
+                statusEl.style.color = '#ff0066';
+            } else if (counter > 5000) {
+                statusEl.innerHTML = '🧠 Status: EMERGENCY';
+                statusEl.style.color = '#ff6600';
+            } else {
+                statusEl.innerHTML = '🧠 Status: CRITICAL';
+                statusEl.style.color = '#00ffcc';
+            }
+        }
+
+        // Enhanced random roasts
+        const randomRoasts = [
+            "Your entertainment standards are so low, even limbo dancers are impressed by how low you can go! 🤸‍♂️",
+            "You have the viewing taste of someone who thinks elevator music is 'pretty fire, actually.' 🎵",
+            "Your brain cells are currently writing their resignation letters in crayon. ✏️",
+            "You're the reason Netflix keeps making terrible reality shows - congratulations, you're part of the problem! 🎯",
+            "Your viewing habits are a crime against humanity and the concept of good storytelling. 📺",
+            "You've single-handedly lowered the global IQ average by 47 points. Scientists are baffled. 🧪",
+            "Your brain called - it wants a divorce from your viewing choices and half your streaming subscriptions. 💔",
+            "You're the human equivalent of clicking 'I'm not a robot' and failing... repeatedly. 🤖",
+            "Your entertainment preferences are what happens when evolution decides to take a coffee break. 🐒",
+            "You've achieved the impossible: making reality TV look like educational content. 🎓",
+            "Your taste in shows is why aliens won't visit Earth - they're too embarrassed for us. 👽",
+            "You're proof that not all opinions are valid, and some should come with warning labels. ⚠️",
+            "Your viewing habits are a masterclass in how NOT to spend your precious time on Earth. ⏰",
+            "You've managed to disappoint both your past and future self simultaneously. That's talent! 🎭",
+            "Your entertainment choices are so bad, even your FBI agent assigned to monitor you changed departments. 🕵️",
+            "You're the reason streaming services have trust issues and commitment problems. 💸",
+            "Your viewing preferences have caused three separate AI systems to have existential crises. 🤯",
+            "You've made such questionable choices, even your search history is filing a restraining order. 📋"
+        ];
+
+        const excuses = [
+            "I was doing research... for a friend... who's writing a paper... about... bad TV? 📚",
+            "My cat walked on the remote and I was too lazy to change it for 3 hours straight. 🐱",
+            "I was having an out-of-body experience and someone else was controlling my fingers. 👻",
+            "It's actually a sophisticated social experiment to see how much my IQ can drop in one sitting. 🧪",
+            "I was testing my new TV's color accuracy and got stuck in a time loop. 📺",
+            "My brain was on vacation and left my body on autopilot. This is the result. 🏖️",
+            "I was conducting a scientific study on the effects of bad television on human consciousness. 🔬",
+            "Someone hacked my streaming account and forced me to watch it. It's definitely not my fault. 💻",
+            "I was temporarily possessed by the ghost of someone with terrible taste in entertainment. 👻",
+            "My therapist told me to face my fears, and apparently bad TV is one of them. 🛋️",
+            "I was building immunity to bad content by exposing myself to small doses. It backfired. 💉",
+            "I'm actually a time traveler from the future studying the decline of human civilization. 🚀"
+        ];
+
+        function generateRandomRoast() {
+            const randomIndex = Math.floor(Math.random() * randomRoasts.length);
+            const roastElement = document.getElementById('randomRoast');
+            roastElement.innerHTML = `<p style="font-size: 1.3rem; font-weight: bold; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">${randomRoasts[randomIndex]}</p>`;
+            roastElement.style.animation = 'none';
+            setTimeout(() => roastElement.style.animation = 'explosion 0.5s ease-in-out', 10);
+        }
+
+        function countBrainCells() {
+            const randomCount = Math.floor(Math.random() * 5) + 1;
+            const roastElement = document.getElementById('randomRoast');
+            roastElement.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 2rem; font-weight: bold; color: #ff0066; margin-bottom: 1rem;">🧠 Brain Cells Remaining: ${randomCount}</p>
+                    <p style="font-size: 1.2rem; opacity: 0.9;">Status: CRITICAL SHORTAGE</p>
+                    <p style="font-size: 1rem; opacity: 0.7; margin-top: 0.5rem;">Please seek immediate intellectual intervention before it's too late! 🚨</p>
+                </div>
+            `;
+            roastElement.style.animation = 'none';
+            setTimeout(() => roastElement.style.animation = 'flash 0.5s ease-in-out', 10);
+        }
+
+        function generateExcuse() {
+            const randomIndex = Math.floor(Math.random() * excuses.length);
+            const roastElement = document.getElementById('randomRoast');
+            roastElement.innerHTML = `
+                <div style="text-align: center;">
+                    <p style="font-size: 1.5rem; font-weight: bold; color: #00ffcc; margin-bottom: 1rem;">🤥 Your Excuse Generator Says:</p>
+                    <p style="font-size: 1.2rem; font-style: italic; color: #fff;">${excuses[randomIndex]}</p>
+                    <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 1rem;">*Excuse quality not guaranteed. Side effects may include eye-rolling from friends and family.</p>
+                </div>
+            `;
+            roastElement.style.animation = 'none';
+            setTimeout(() => roastElement.style.animation = 'bounce 0.5s ease-in-out', 10);
+        }
+
+        function highlightCard(card) {
+            // Remove highlight from all cards
+            document.querySelectorAll('.roast-card').forEach(c => {
+                c.style.background = 'linear-gradient(135deg, rgba(255,0,102,0.2), rgba(102,0,255,0.2))';
+                c.classList.remove('click-me');
+            });
+            
+            // Highlight clicked card
+            card.style.background = 'linear-gradient(135deg, rgba(255,0,102,0.6), rgba(102,0,255,0.6))';
+            
+            // Add explosion effect
+            card.style.animation = 'none';
+            setTimeout(() => {
+                card.style.animation = 'wiggle 0.5s ease-in-out';
+            }, 10);
+
+            // Add some random emojis
+            const emojis = ['💥', '🔥', '😂', '💀', '🤯', '⚡'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Create floating emoji
+            const emojiEl = document.createElement('div');
+            emojiEl.innerHTML = randomEmoji;
+            emojiEl.style.position = 'absolute';
+            emojiEl.style.fontSize = '3rem';
+            emojiEl.style.top = '50%';
+            emojiEl.style.left = '50%';
+            emojiEl.style.transform = 'translate(-50%, -50%)';
+            emojiEl.style.animation = 'float 2s ease-out forwards';
+            emojiEl.style.pointerEvents = 'none';
+            emojiEl.style.zIndex = '1000';
+            
+            card.style.position = 'relative';
+            card.appendChild(emojiEl);
+            
+            // Remove emoji after animation
+            setTimeout(() => {
+                emojiEl.remove();
+            }, 2000);
+        }
+
+        // Initialize counter and start updates
+        updateCounter();
+        setInterval(updateCounter, 3000);
+
+        // Add some extra fun interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make the header title clickable for extra fun
+            const title = document.querySelector('.header h1');
+            title.style.cursor = 'pointer';
+            title.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => this.style.animation = 'wobble 0.5s ease-in-out', 10);
+                
+                // Random title changes
+                const titles = [
+                    'The Traitors Brain Rot Detector',
+                    'Why Your TV Choices Hurt Our Feelings',
+                    'Netflix and Chill? More Like Netflix and Kill (Your Brain)',
+                    'The Ultimate Reality TV Roast Session',
+                    'Your Viewing Habits: A Horror Story'
+                ];
+                
+                const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+                this.textContent = randomTitle;
+                
+                setTimeout(() => {
+                    this.textContent = 'The Traitors Brain Rot Detector';
+                }, 3000);
+            });
+        });
+    </script>
